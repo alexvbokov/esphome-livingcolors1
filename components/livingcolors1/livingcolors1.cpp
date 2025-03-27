@@ -105,29 +105,30 @@ void LivingColors1ClientComponent::send_(uint64_t address, uint8_t *data, uint8_
 	uint8_t length_ = 10 + length;
 	uint8_t data_[length_];
 
-	// Packet length
-	data_[0] = 10 + length - 1;
-
-	// Addresses
-	data_[1] = uint8_t(address >> 8 * 7);
-	data_[2] = uint8_t(address >> 8 * 6);
-	data_[3] = uint8_t(address >> 8 * 5);
-	data_[4] = uint8_t(address >> 8 * 4);
-	data_[5] = uint8_t(address >> 8 * 3);
-	data_[6] = uint8_t(address >> 8 * 2);
-	data_[7] = uint8_t(address >> 8 * 1);
-	data_[8] = uint8_t(address >> 8 * 0);
-
-	// Fixed
-	data_[9] = 0x11;
-
-	// Command
-	for(int j = 0; j < length; j++)
-		data_[10+j] = data[j];
-
 	char hex_command[length_*2+1];
 
 	for (int i = 0; i < this->send_repeats_; i++) {
+
+		// Packet length
+		data_[0] = 10 + length - 1;
+
+		// Addresses
+		data_[1] = uint8_t(address >> 8 * 7);
+		data_[2] = uint8_t(address >> 8 * 6);
+		data_[3] = uint8_t(address >> 8 * 5);
+		data_[4] = uint8_t(address >> 8 * 4);
+		data_[5] = uint8_t(address >> 8 * 3);
+		data_[6] = uint8_t(address >> 8 * 2);
+		data_[7] = uint8_t(address >> 8 * 1);
+		data_[8] = uint8_t(address >> 8 * 0);
+
+		// Fixed
+		data_[9] = 0x11;
+
+		// Command
+		for(int j = 0; j < length; j++)
+			data_[10+j] = data[j];
+
 		if(i > 0)
 			esphome::delay(14);
 
