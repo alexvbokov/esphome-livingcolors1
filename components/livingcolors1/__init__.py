@@ -14,6 +14,7 @@ LivingColors1Component = livingcolors1_ns.class_(
 CONF_LIVINGCOLORS1_ID = "livingcolors1_id"
 CONF_ADDRESS = "address"
 CONF_SEND_REPEATS = "send_repeats"
+CONF_SLAVE = "slave"	# avb
 
 CONFIG_SCHEMA = (
     cv.Schema(
@@ -38,6 +39,7 @@ LIVINGCOLORS1_DEVICE_SCHEMA = cv.Schema(
     {
         cv.GenerateID(CONF_LIVINGCOLORS1_ID): cv.use_id(LivingColors1Component),
         cv.Required(CONF_ADDRESS): cv.hex_uint64_t,
+        cv.Optional(CONF_SLAVE): cv.hex_uint64_t,	# avb
         cv.Optional(CONF_SEND_REPEATS): cv.positive_int,
     }
 )
