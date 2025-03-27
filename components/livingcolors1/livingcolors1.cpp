@@ -131,7 +131,7 @@ void LivingColors1ClientComponent::send_(uint64_t address, uint8_t *data, uint8_
 		if(i > 0)
 			esphome::delay(14);
 
-		to_hex(hex_command, data, length_);
+		to_hex(hex_command, data_, length_);
 		ESP_LOGV(TAG, "  command: 0x%s", hex_command);
 
 		this->parent_->send(&data_[0], length_);
