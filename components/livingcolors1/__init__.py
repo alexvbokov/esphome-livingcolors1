@@ -49,6 +49,7 @@ async def register_livingcolors1_device(var, config):
     parent = await cg.get_variable(config[CONF_LIVINGCOLORS1_ID])
     cg.add(var.set_parent(parent))
     cg.add(var.set_address(config[CONF_ADDRESS]))
-    cg.add(var.set_slave(config[CONF_SLAVE]))
+    if CONF_SLAVE in config:
+	    cg.add(var.set_slave(config[CONF_SLAVE]))
     if CONF_SEND_REPEATS in config:
         cg.add(var.set_send_repeats(config[CONF_SEND_REPEATS]))
