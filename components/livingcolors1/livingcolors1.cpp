@@ -113,9 +113,15 @@ void LivingColors1ClientComponent::send_(uint64_t address, uint8_t *data, uint8_
 	for(int j = 0; j < length; j++)
 		data_[10+j] = data[j];
 
+	char hex_command[length_*2+1];
+
 	for (int i = 0; i < this->send_repeats_; i++) {
 		if(i > 0)
 			esphome::delay(14);
+
+		to_hex(hex_command, data, length_);
+		ESP_LOGV(TAG, "  command: 0x%s", hex_command);
+
 		this->parent_->send(&data_[0], length_);
 	}
 }
