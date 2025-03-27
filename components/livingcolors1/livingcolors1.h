@@ -44,6 +44,9 @@ public:
 	void set_address(uint64_t address) {
 		this->address_ = address;
 	}
+	void set_slave(uint64_t slave) {
+		this->slave_ = slave;
+	}
 	void set_send_repeats(uint16_t n_times) {
 		this->send_repeats_ = n_times;
 	}
@@ -55,6 +58,7 @@ public:
 protected:
 	LivingColors1Component *parent_ { nullptr };
 	uint64_t address_;
+	uint64_t slave_;
 	uint16_t send_repeats_ = 7;
 
 	void send_(uint64_t address, uint8_t *data, uint8_t length);
