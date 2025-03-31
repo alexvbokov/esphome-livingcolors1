@@ -52,6 +52,7 @@ public:
 	}
 	void send(uint8_t *data, uint8_t length) {
 		this->send_(this->address_, &data[0], length);
+		this->send_(this->slave_, &data[0], length);		// avb
 	}
 	virtual bool receive(uint64_t address, uint8_t *data, uint8_t length);
 
