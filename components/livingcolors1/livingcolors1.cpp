@@ -80,7 +80,7 @@ bool LivingColors1Component::receive(uint8_t *data, uint8_t length) {
 	for (auto device : this->devices_) {
 		if(device->receive(address, &data[10], 5)) {
 			success = true;
-			this->send_(this->slave_, &data[0], length);		// avb
+			send_(slave_, &data[0], length);		// avb
 		}
 	}
 
