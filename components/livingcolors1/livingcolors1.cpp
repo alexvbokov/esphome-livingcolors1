@@ -78,10 +78,8 @@ bool LivingColors1Component::receive(uint8_t *data, uint8_t length) {
 	// Check if the address is handled by a device
 	bool success = false;
 	for (auto device : this->devices_) {
-		if(device->receive(address, &data[10], 5)) {
+		if(device->receive(address, &data[10], 5)) 
 			success = true;
-			LivingColors1ClientComponent->send_(this->parent_->slave_, &data[0], length);		// avb
-		}
 	}
 
 	if(!success) {
