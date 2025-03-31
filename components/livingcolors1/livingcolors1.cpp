@@ -108,8 +108,8 @@ void LivingColors1ClientComponent::send_(uint64_t address, uint8_t *data, uint8_
 	char hex_command[length_*2+1];
 	char hex_data[length*2+1];
 
-	to_hex(hex_data, data, length);
-	ESP_LOGE(TAG, "  data to send: 0x%s", hex_command);
+	to_hex(hex_data, *data, length);
+	ESP_LOGE(TAG, "  data to send: 0x%s", hex_data);
 
 	for (int i = 0; i < this->send_repeats_; i++) {
 
@@ -138,6 +138,7 @@ void LivingColors1ClientComponent::send_(uint64_t address, uint8_t *data, uint8_
 
 		if (i==0) {
 			to_hex(hex_command, data_, length_);
+			ESP_LOGE(TAG, "  address: 0x%016" PRIX64, address);
 			ESP_LOGE(TAG, "  command: 0x%s", hex_command);
 		}
 
